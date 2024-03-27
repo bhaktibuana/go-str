@@ -16,6 +16,7 @@ go get github.com/bhaktibuana/go-str
 ## Available Functions
 
 - [Camel](#camel)
+- [Snake](#snake)
 
 ### Examples
 
@@ -29,5 +30,18 @@ import "github.com/bhaktibuana/go-str"
 goStr.Camel("foo_bar")
 
 // "fooBar"
+
+```
+
+#### Snake
+
+`Snake` converts a given string to snake_case.
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Snake("myName-is john")
+
+// "my_name_is_john"
 
 ```
