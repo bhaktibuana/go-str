@@ -5,7 +5,7 @@ import (
 	"unicode"
 )
 
-// Camel converts a given string to camelCase.
+// Camel method converts the given string to camelCase.
 /*
  * @param input string
  * @returns string
@@ -24,7 +24,7 @@ func Camel(input string) string {
 	return strings.Join(words, "")
 }
 
-// Snake converts a given string to snake_case.
+// Snake snake method converts the given string to snake_case.
 /*
  * @param input string
  * @returns string
@@ -74,7 +74,7 @@ func Snake(input string) string {
 	return finalBuilder.String()
 }
 
-// Ucfirst returns the given string with the first character capitalized.
+// Ucfirst method returns the given string with the first character.
 /*
  * @param input string
  * @returns string
@@ -86,7 +86,7 @@ func Ucfirst(input string) string {
 	return strings.ToUpper(string(input[0])) + input[1:]
 }
 
-// Ucsplit splits the given string into an array by uppercase characters.
+// Ucsplit method splits the given string into an array by uppercase characters.
 /*
  * @param input string
  * @returns []string
@@ -109,7 +109,7 @@ func Ucsplit(input string) []string {
 	return substrings
 }
 
-// Headline will convert strings delimited by casing, hyphens, or underscores into a space delimited string with each word's first letter capitalized.
+// Headline method will convert strings delimited by casing, hyphens, or underscores into a space delimited string with each word's first letter capitalized.
 /*
  * @param input string
  * @returns string
