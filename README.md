@@ -25,6 +25,16 @@ go get github.com/bhaktibuana/go-str
 `Camel` converts a given string to camelCase.
 
 ```go
+/*
+ * @param input string
+ * @returns string
+ */
+func Camel(input string) string
+```
+
+- usage
+
+```go
 import "github.com/bhaktibuana/go-str"
 
 goStr.Camel("foo_bar")
@@ -36,6 +46,16 @@ goStr.Camel("foo_bar")
 #### Snake
 
 `Snake` converts a given string to snake_case.
+
+```go
+/*
+ * @param input string
+ * @returns string
+ */
+func Snake(input string) string
+```
+
+- usage
 
 ```go
 import "github.com/bhaktibuana/go-str"

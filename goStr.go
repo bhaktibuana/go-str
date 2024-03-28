@@ -6,8 +6,12 @@ import (
 )
 
 // Camel converts a given string to camelCase.
-func Camel(s string) string {
-	words := strings.FieldsFunc(s, func(r rune) bool {
+/*
+ * @param input string
+ * @returns string
+ */
+func Camel(input string) string {
+	words := strings.FieldsFunc(input, func(r rune) bool {
 		return !unicode.IsLetter(r) && !unicode.IsNumber(r)
 	})
 
@@ -21,14 +25,18 @@ func Camel(s string) string {
 }
 
 // Snake converts a given string to snake_case.
-func Snake(s string) string {
+/*
+ * @param input string
+ * @returns string
+ */
+func Snake(input string) string {
 	var firstBuilder strings.Builder
 	var builder strings.Builder
 	var finalBuilder strings.Builder
 	var foundAlphanumeric bool
 	var lastWasUnderscore bool
 
-	for _, c := range s {
+	for _, c := range input {
 		if foundAlphanumeric || unicode.IsLetter(c) || unicode.IsDigit(c) {
 			firstBuilder.WriteRune(c)
 			foundAlphanumeric = true
