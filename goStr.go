@@ -86,7 +86,7 @@ func Ucfirst(input string) string {
 	return strings.ToUpper(string(input[0])) + input[1:]
 }
 
-// Ucsplit splits the given string into an array by uppercase characters
+// Ucsplit splits the given string into an array by uppercase characters.
 /*
  * @param input string
  * @returns []string
@@ -107,4 +107,35 @@ func Ucsplit(input string) []string {
 	}
 
 	return substrings
+}
+
+// Headline will convert strings delimited by casing, hyphens, or underscores into a space delimited string with each word's first letter capitalized.
+/*
+ * @param input string
+ * @returns string
+ */
+func Headline(input string) string {
+	input = strings.ReplaceAll(input, "-", " ")
+	input = strings.ReplaceAll(input, "_", " ")
+
+	var words []string
+	var currentWord string
+
+	for _, r := range input {
+		if unicode.IsUpper(r) && currentWord != "" {
+			words = append(words, currentWord)
+			currentWord = string(r)
+		} else {
+			currentWord += string(r)
+		}
+	}
+	if currentWord != "" {
+		words = append(words, currentWord)
+	}
+
+	for i, word := range words {
+		words[i] = strings.Title(word)
+	}
+
+	return strings.Join(words, " ")
 }
