@@ -15,6 +15,8 @@ go get github.com/bhaktibuana/go-str
 
 ## Available Functions
 
+- [After](#after)
+- [AfterLast](#afterlast)
 - [Camel](#camel)
 - [Headline](#headline)
 - [Limit](#limit)
@@ -23,6 +25,54 @@ go get github.com/bhaktibuana/go-str
 - [Ucsplit](#ucsplit)
 
 ### Examples
+
+#### After
+
+`After` method returns everything after the given value in a string. The entire string will be returned if the value does not exist within the string.
+
+```go
+/*
+ * @param input string
+ * @param substr string
+ * @returns string
+ */
+func After(input, substr string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.After("The quick brown fox jumps over the lazy dog", "brown")
+
+// " fox jumps over the lazy dog"
+
+```
+
+#### AfterLast
+
+`AfterLast` method returns everything after the last occurrence of the given value in a string. The entire string will be returned if the value does not exist within the string.
+
+```go
+/*
+ * @param input string
+ * @param substr string
+ * @returns string
+ */
+func AfterLast(input, substr string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.AfterLast("https://www.example.com/user/profile", "/")
+
+// "profile"
+
+```
 
 #### Camel
 

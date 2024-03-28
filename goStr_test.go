@@ -154,3 +154,43 @@ func TestLimit(t *testing.T) {
 		}
 	}
 }
+
+func TestAfter(t *testing.T) {
+	testCases := []struct {
+		input    string
+		substr   string
+		expected string
+	}{
+		{"The quick brown fox jumps over the lazy dog", "brown", " fox jumps over the lazy dog"},
+		{"Yellow green blue", "red", ""},
+		{"", "", ""},
+	}
+
+	for _, tc := range testCases {
+		result := After(tc.input, tc.substr)
+
+		if result != tc.expected {
+			t.Errorf("After(%s) = %s; want %s", tc.input, result, tc.expected)
+		}
+	}
+}
+
+func TestAfterLast(t *testing.T) {
+	testCases := []struct {
+		input    string
+		substr   string
+		expected string
+	}{
+		{"https://www.example.com/user/profile", "/", "profile"},
+		{"https://www.example.com/user/profile", "@", "https://www.example.com/user/profile"},
+		{"", "", ""},
+	}
+
+	for _, tc := range testCases {
+		result := AfterLast(tc.input, tc.substr)
+
+		if result != tc.expected {
+			t.Errorf("AfterLast(%s) = %s; want %s", tc.input, result, tc.expected)
+		}
+	}
+}

@@ -156,3 +156,35 @@ func Limit(input string, length int, appendStr ...string) string {
 	}
 	return input[:length] + "..."
 }
+
+// After method returns everything after the given value in a string. The entire string will be returned if the value does not exist within the string.
+/*
+ * @param input string
+ * @param substr string
+ * @returns string
+ */
+func After(input, substr string) string {
+	index := strings.Index(input, substr)
+
+	if index == -1 {
+		return ""
+	}
+
+	return input[index+len(substr):]
+}
+
+// AfterLast method returns everything after the last occurrence of the given value in a string. The entire string will be returned if the value does not exist within the string.
+/*
+ * @param input string
+ * @param substr string
+ * @returns string
+ */
+func AfterLast(input, substr string) string {
+	index := strings.LastIndex(input, substr)
+
+	if index == -1 {
+		return input
+	}
+
+	return input[index+len(substr):]
+}
