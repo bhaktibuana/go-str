@@ -77,7 +77,7 @@ goStr.AfterLast("https://www.example.com/user/profile", "/")
 
 #### APA
 
-`APA` method converts the given string to title case following the APA guidelines. (Supported language: English)
+`APA` method converts the given string to title case following the [APA guidelines](https://apastyle.apa.org/style-grammar-guidelines/capitalization/title-case). (Supported language: English)
 
 ```go
 /*
