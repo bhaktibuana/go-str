@@ -73,3 +73,15 @@ func Snake(input string) string {
 	}
 	return finalBuilder.String()
 }
+
+// Ucfirst returns the given string with the first character capitalized.
+/*
+ * @param input string
+ * @returns string
+ */
+func Ucfirst(input string) string {
+	if len(input) == 0 {
+		return input
+	}
+	return strings.ToUpper(string(input[0])) + input[1:]
+}

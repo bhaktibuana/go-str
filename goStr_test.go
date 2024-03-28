@@ -51,3 +51,22 @@ func TestSnake(t *testing.T) {
 		}
 	}
 }
+
+func TestUcfirst(t *testing.T) {
+	testCases := []struct {
+		input    string
+		expected string
+	}{
+		{"hello world", "Hello world"},
+		{"this is my car", "This is my car"},
+		{"", ""},
+	}
+
+	for _, tc := range testCases {
+		result := Ucfirst(tc.input)
+
+		if result != tc.expected {
+			t.Errorf("Snake(%s) = %s; want %s", tc.input, result, tc.expected)
+		}
+	}
+}
