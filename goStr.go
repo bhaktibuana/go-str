@@ -139,3 +139,20 @@ func Headline(input string) string {
 
 	return strings.Join(words, " ")
 }
+
+// Limit method truncates the given string to the specified length.
+/*
+ * @param input string
+ * @param length int
+ * @param appendStr string
+ * @returns string
+ */
+func Limit(input string, length int, appendStr ...string) string {
+	if len(input) <= length {
+		return input
+	}
+	if len(appendStr) > 0 {
+		return input[:length] + appendStr[0]
+	}
+	return input[:length] + "..."
+}

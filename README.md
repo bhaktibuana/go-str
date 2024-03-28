@@ -17,6 +17,7 @@ go get github.com/bhaktibuana/go-str
 
 - [Camel](#camel)
 - [Headline](#headline)
+- [Limit](#limit)
 - [Snake](#snake)
 - [Ucfirst](#ucfirst)
 - [Ucsplit](#ucsplit)
@@ -70,6 +71,42 @@ goStr.Headline("HelloWorld")
 goStr.Headline("foo_bar")
 
 // "Foo Bar"
+
+```
+
+#### Limit
+
+`Limit` method truncates the given string to the specified length.
+
+```go
+/*
+ * @param input string
+ * @param length int
+ * @param appendStr string
+ * @returns string
+ */
+func Limit(input string, length int, appendStr ...string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Limit("The quick brown fox jumps over the lazy dog", 20)
+
+// The quick brown fox...
+
+```
+
+You may pass a third argument to the method to change the string that will be appended to the end of the truncated string
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Limit("The quick brown fox jumps over the lazy dog", 20, " (...)")
+
+// The quick brown fox (...)
 
 ```
 
