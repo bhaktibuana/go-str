@@ -69,7 +69,7 @@ func TestUcfirst(t *testing.T) {
 		result := Ucfirst(tc.input)
 
 		if result != tc.expected {
-			t.Errorf("Snake(%s) = %s; want %s", tc.input, result, tc.expected)
+			t.Errorf("Ucfirst(%s) = %s; want %s", tc.input, result, tc.expected)
 		}
 	}
 }
@@ -89,8 +89,29 @@ func TestUcsplit(t *testing.T) {
 		t.Run(test.input, func(t *testing.T) {
 			result := Ucsplit(test.input)
 			if !reflect.DeepEqual(result, test.expected) {
-				t.Errorf("UCSplit(%q) = %q, expected %q", test.input, result, test.expected)
+				t.Errorf("Ucsplit(%q) = %q, expected %q", test.input, result, test.expected)
 			}
 		})
+	}
+}
+
+func TestHeadline(t *testing.T) {
+	testCases := []struct {
+		input    string
+		expected string
+	}{
+		{"hello_world", "Hello World"},
+		{"FooBar", "Foo Bar"},
+		{"john doe", "John Doe"},
+		{"john-smith", "John Smith"},
+		{"", ""},
+	}
+
+	for _, tc := range testCases {
+		result := Headline(tc.input)
+
+		if result != tc.expected {
+			t.Errorf("Headline(%s) = %s; want %s", tc.input, result, tc.expected)
+		}
 	}
 }

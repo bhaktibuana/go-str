@@ -16,13 +16,16 @@ go get github.com/bhaktibuana/go-str
 ## Available Functions
 
 - [Camel](#camel)
+- [Headline](#headline)
 - [Snake](#snake)
+- [Ucfirst](#ucfirst)
+- [Ucsplit](#ucsplit)
 
 ### Examples
 
 #### Camel
 
-`Camel` converts a given string to camelCase.
+`Camel` method converts the given string to camelCase.
 
 ```go
 /*
@@ -43,9 +46,36 @@ goStr.Camel("foo_bar")
 
 ```
 
+#### Headline
+
+`Headline` method will convert strings delimited by casing, hyphens, or underscores into a space delimited string with each word's first letter capitalized.
+
+```go
+/*
+ * @param input string
+ * @returns string
+ */
+func Headline(input string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Headline("HelloWorld")
+
+// "Hello World"
+
+goStr.Headline("foo_bar")
+
+// "Foo Bar"
+
+```
+
 #### Snake
 
-`Snake` converts a given string to snake_case.
+`Snake` method converts the given string to snake_case.
 
 ```go
 /*
@@ -68,7 +98,7 @@ goStr.Snake("myName-is john")
 
 #### Ucfirst
 
-`Ucfirst` returns the given string with the first character capitalized.
+`Ucfirst` method returns the given string with the first character capitalized.
 
 ```go
 /*
@@ -91,7 +121,7 @@ goStr.Ucfirst("foo bar")
 
 #### Ucsplit
 
-`Ucsplit` splits the given string into an array by uppercase characters.
+`Ucsplit` method splits the given string into a collection by uppercase characters.
 
 ```go
 /*
