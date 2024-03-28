@@ -17,6 +17,7 @@ go get github.com/bhaktibuana/go-str
 
 - [After](#after)
 - [AfterLast](#afterlast)
+- [APA](#apa)
 - [Camel](#camel)
 - [Headline](#headline)
 - [Limit](#limit)
@@ -71,6 +72,29 @@ import "github.com/bhaktibuana/go-str"
 goStr.AfterLast("https://www.example.com/user/profile", "/")
 
 // "profile"
+
+```
+
+#### APA
+
+`APA` method converts the given string to title case following the APA guidelines. (Supported language: English)
+
+```go
+/*
+ * @param input string
+ * @returns string
+ */
+func APA(input string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.APA("createing a project")
+
+// "Creating a Project"
 
 ```
 
