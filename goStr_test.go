@@ -115,3 +115,42 @@ func TestHeadline(t *testing.T) {
 		}
 	}
 }
+
+func TestLimit(t *testing.T) {
+	firstTestCases := []struct {
+		input    string
+		length   int
+		expected string
+	}{
+		{"Hello, my name is John.", 17, "Hello, my name is..."},
+		{"Hello World", 0, "..."},
+		{"", 0, ""},
+	}
+
+	secondTestCases := []struct {
+		input     string
+		length    int
+		appendStr string
+		expected  string
+	}{
+		{"Hello, my name is John.", 17, " (...)", "Hello, my name is (...)"},
+		{"Hello World", 0, "(...)", "(...)"},
+		{"", 0, "(...)", ""},
+	}
+
+	for _, tc1 := range firstTestCases {
+		result := Limit(tc1.input, tc1.length)
+
+		if result != tc1.expected {
+			t.Errorf("Limit(%s) = %s; want %s", tc1.input, result, tc1.expected)
+		}
+	}
+
+	for _, tc2 := range secondTestCases {
+		result := Limit(tc2.input, tc2.length, tc2.appendStr)
+
+		if result != tc2.expected {
+			t.Errorf("Limit(%s) = %s; want %s", tc2.input, result, tc2.expected)
+		}
+	}
+}
