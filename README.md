@@ -65,3 +65,26 @@ goStr.Snake("myName-is john")
 // "my_name_is_john"
 
 ```
+
+#### Ucfirst
+
+`Ucfirst` returns the given string with the first character capitalized.
+
+```go
+/*
+ * @param input string
+ * @returns string
+ */
+func Ucfirst(input string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Ucfirst("foo bar")
+
+// "Foo bar"
+
+```
