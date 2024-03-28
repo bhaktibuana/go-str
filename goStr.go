@@ -85,3 +85,26 @@ func Ucfirst(input string) string {
 	}
 	return strings.ToUpper(string(input[0])) + input[1:]
 }
+
+// Ucsplit splits the given string into an array by uppercase characters
+/*
+ * @param input string
+ * @returns []string
+ */
+func Ucsplit(input string) []string {
+	var substrings []string
+	start := 0
+
+	for i, c := range input {
+		if unicode.IsUpper(c) && i > 0 {
+			substrings = append(substrings, input[start:i])
+			start = i
+		}
+	}
+
+	if start < len(input) {
+		substrings = append(substrings, input[start:])
+	}
+
+	return substrings
+}

@@ -1,6 +1,9 @@
 package goStr
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestCamel(t *testing.T) {
 	testCases := []struct {
@@ -68,5 +71,26 @@ func TestUcfirst(t *testing.T) {
 		if result != tc.expected {
 			t.Errorf("Snake(%s) = %s; want %s", tc.input, result, tc.expected)
 		}
+	}
+}
+
+func TestUcsplit(t *testing.T) {
+	testCases := []struct {
+		input    string
+		expected []string
+	}{
+		{"HelloWorldFooBar", []string{"Hello", "World", "Foo", "Bar"}},
+		{"camelCaseString", []string{"camel", "Case", "String"}},
+		{"OneTwoThree", []string{"One", "Two", "Three"}},
+		{"single", []string{"single"}},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.input, func(t *testing.T) {
+			result := Ucsplit(test.input)
+			if !reflect.DeepEqual(result, test.expected) {
+				t.Errorf("UCSplit(%q) = %q, expected %q", test.input, result, test.expected)
+			}
+		})
 	}
 }

@@ -88,3 +88,26 @@ goStr.Ucfirst("foo bar")
 // "Foo bar"
 
 ```
+
+#### Ucsplit
+
+`Ucsplit` splits the given string into an array by uppercase characters.
+
+```go
+/*
+ * @param input string
+ * @returns []string
+ */
+func Ucsplit(input string) []string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Ucsplit("HelloWorld")
+
+// ["Hello", "World"]
+
+```
