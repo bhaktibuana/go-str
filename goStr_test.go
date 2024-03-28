@@ -174,3 +174,23 @@ func TestAfter(t *testing.T) {
 		}
 	}
 }
+
+func TestAfterLast(t *testing.T) {
+	testCases := []struct {
+		input    string
+		substr   string
+		expected string
+	}{
+		{"https://www.example.com/user/profile", "/", "profile"},
+		{"https://www.example.com/user/profile", "@", "https://www.example.com/user/profile"},
+		{"", "", ""},
+	}
+
+	for _, tc := range testCases {
+		result := AfterLast(tc.input, tc.substr)
+
+		if result != tc.expected {
+			t.Errorf("AfterLast(%s) = %s; want %s", tc.input, result, tc.expected)
+		}
+	}
+}
