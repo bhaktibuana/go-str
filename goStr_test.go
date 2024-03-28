@@ -194,3 +194,22 @@ func TestAfterLast(t *testing.T) {
 		}
 	}
 }
+
+func TestAPA(t *testing.T) {
+	testCases := []struct {
+		input    string
+		expected string
+	}{
+		{"Creating A Project", "Creating a Project"},
+		{"creating a project", "Creating a Project"},
+		{"", ""},
+	}
+
+	for _, tc := range testCases {
+		result := APA(tc.input)
+
+		if result != tc.expected {
+			t.Errorf("APA(%s) = %s; want %s", tc.input, result, tc.expected)
+		}
+	}
+}
