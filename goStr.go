@@ -304,7 +304,7 @@ func Currency(amount interface{}, code CurrencyCode, options ...bool) string {
 		return ""
 	}
 
-	amountStr := strconv.FormatFloat(num, 'f', 2, 64)
+	amountStr := fmt.Sprintf("%f", num)
 	if !useDecimal {
 		amountStr = strconv.Itoa(int(num))
 	}
