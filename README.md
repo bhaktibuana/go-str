@@ -22,6 +22,7 @@ go get github.com/bhaktibuana/go-str
 - [Before](#before)
 - [BeforeLast](#beforelast)
 - [Camel](#camel)
+- [Currency](#currency)
 - [Headline](#headline)
 - [Limit](#limit)
 - [Snake](#snake)
@@ -192,6 +193,39 @@ import "github.com/bhaktibuana/go-str"
 goStr.Camel("foo_bar")
 
 // "fooBar"
+
+```
+
+#### Currency
+
+`Currency` method will convert an amount of number or string into selected country code currency format.
+
+```go
+/*
+ * @param amount interface{} (int | float64 | string)
+ * @param code CurrencyCode (string)
+ * @param options ...bool (useDecimal true, dotSeparator false, useSpacer true)
+ * @returns string
+ */
+func Currency(amount interface{}, code CurrencyCode, options ...bool) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Currency(77.5, CURRENCY_USD)
+
+// "$ 77.50"
+
+goStr.Currency(77.5, CURRENCY_USD, true, false, false)
+
+// "$77.50"
+
+goStr.Currency(12500, CURRENCY_IDR, true, true)
+
+// "Rp 12.500,00"
 
 ```
 
