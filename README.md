@@ -22,6 +22,7 @@ go get github.com/bhaktibuana/go-str
 - [Before](#before)
 - [BeforeLast](#beforelast)
 - [Between](#between)
+- [BetweenFirst](#betweenfirst)
 - [Camel](#camel)
 - [Currency](#currency)
 - [Headline](#headline)
@@ -196,6 +197,31 @@ import "github.com/bhaktibuana/go-str"
 goStr.Between("This is my name", "This", "name")
 
 // " is my "
+
+```
+
+#### BetweenFirst
+
+`BetweenFirst` method returns the smallest possible portion of a string between two values.
+
+```go
+/*
+ * @param input string
+ * @param start string
+ * @param end string
+ * @returns string
+ */
+func BetweenFirst(input, start, end string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.BetweenFirst("[a] bc [d]", "[", "]")
+
+// "a"
 
 ```
 
