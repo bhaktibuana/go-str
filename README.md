@@ -18,6 +18,7 @@ go get github.com/bhaktibuana/go-str
 - [After](#after)
 - [AfterLast](#afterlast)
 - [APA](#apa)
+- [Ascii](#ascii)
 - [Camel](#camel)
 - [Headline](#headline)
 - [Limit](#limit)
@@ -95,6 +96,29 @@ import "github.com/bhaktibuana/go-str"
 goStr.APA("createing a project")
 
 // "Creating a Project"
+
+```
+
+#### Ascii
+
+`Ascii` method will attempt to transliterate the string into an ASCII value.
+
+```go
+/*
+ * @param input string
+ * @returns string
+ */
+func Ascii(input string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Ascii("û")
+
+// "u"
 
 ```
 
