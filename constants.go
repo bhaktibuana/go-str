@@ -28,3 +28,17 @@ var apaMinorWords = map[string]bool{
 	"from":  true,
 	"via":   true,
 }
+
+type CurrencyCode string
+
+const (
+	CURRENCY_IDR CurrencyCode = "IDR"
+	CURRENCY_USD CurrencyCode = "USD"
+	CURRENCY_EUR CurrencyCode = "EUR"
+)
+
+var CurrencyFormats = map[CurrencyCode]string{
+	CURRENCY_IDR: "Rp",
+	CURRENCY_USD: "$",
+	CURRENCY_EUR: "€",
+}
