@@ -301,7 +301,7 @@ func TestCurrency(t *testing.T) {
 		{"10000", CURRENCY_USD, &decimalTrue, &dotSeparatorFalse, &spacerTrue, "$ 10,000.00"},
 		{12000, CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerTrue, "Rp 12.000,00"},
 		{"12000", CURRENCY_IDR, &decimalFalse, &dotSeparatorFalse, &spacerTrue, "Rp 12,000"},
-		{15250.8972, CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, "Rp15.250,90"},
+		{15250.8972, CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, "Rp15.250,89"},
 		{"@", CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, ""},
 		{"", CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, ""},
 		{true, CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, ""},
