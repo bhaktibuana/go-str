@@ -142,7 +142,7 @@ func TestLimit(t *testing.T) {
 		result := Limit(tc1.input, tc1.length)
 
 		if result != tc1.expected {
-			t.Errorf("Limit(%s) = %s; want %s", tc1.input, result, tc1.expected)
+			t.Errorf("Limit(%s, %v) = %s; want %s", tc1.input, tc1.length, result, tc1.expected)
 		}
 	}
 
@@ -150,7 +150,7 @@ func TestLimit(t *testing.T) {
 		result := Limit(tc2.input, tc2.length, tc2.appendStr)
 
 		if result != tc2.expected {
-			t.Errorf("Limit(%s) = %s; want %s", tc2.input, result, tc2.expected)
+			t.Errorf("Limit(%s, %v, %s) = %s; want %s", tc2.input, tc2.length, tc2.appendStr, result, tc2.expected)
 		}
 	}
 }
@@ -170,7 +170,7 @@ func TestAfter(t *testing.T) {
 		result := After(tc.input, tc.substr)
 
 		if result != tc.expected {
-			t.Errorf("After(%s) = %s; want %s", tc.input, result, tc.expected)
+			t.Errorf("After(%s, %s) = %s; want %s", tc.input, tc.substr, result, tc.expected)
 		}
 	}
 }
@@ -190,7 +190,7 @@ func TestAfterLast(t *testing.T) {
 		result := AfterLast(tc.input, tc.substr)
 
 		if result != tc.expected {
-			t.Errorf("AfterLast(%s) = %s; want %s", tc.input, result, tc.expected)
+			t.Errorf("AfterLast(%s, %s) = %s; want %s", tc.input, tc.substr, result, tc.expected)
 		}
 	}
 }
@@ -255,7 +255,7 @@ func TestBefore(t *testing.T) {
 		result := Before(tc.input, tc.substr)
 
 		if result != tc.expected {
-			t.Errorf("Before(%s) = %s; want %s", tc.input, result, tc.expected)
+			t.Errorf("Before(%s, %s) = %s; want %s", tc.input, tc.substr, result, tc.expected)
 		}
 	}
 }
@@ -276,7 +276,7 @@ func TestBeforeLast(t *testing.T) {
 		result := BeforeLast(tc.input, tc.substr)
 
 		if result != tc.expected {
-			t.Errorf("BeforeLast(%s) = %s; want %s", tc.input, result, tc.expected)
+			t.Errorf("BeforeLast(%s. %s) = %s; want %s", tc.input, tc.substr, result, tc.expected)
 		}
 	}
 }
@@ -334,6 +334,50 @@ func TestCurrency(t *testing.T) {
 
 		if result != tc.expected {
 			t.Errorf("Currency(%v, %s, %v, %v, %v) = %s; want %s", tc.amount, tc.code, useDecimal, dotSeparator, useSpacer, result, tc.expected)
+		}
+	}
+}
+
+func TestBetween(t *testing.T) {
+	testCases := []struct {
+		input    string
+		start    string
+		end      string
+		expected string
+	}{
+		{"This is my name", "This", "name", " is my "},
+		{"This is my name", "@", "name", ""},
+		{"This is my name", "This", "@", ""},
+		{"[a] bc [d]", "[", "]", "a] bc [d"},
+	}
+
+	for _, tc := range testCases {
+		result := Between(tc.input, tc.start, tc.end)
+
+		if result != tc.expected {
+			t.Errorf("Between(%s, %s, %s) = %s; want %s", tc.input, tc.start, tc.end, result, tc.expected)
+		}
+	}
+}
+
+func TestBetweenFirst(t *testing.T) {
+	testCases := []struct {
+		input    string
+		start    string
+		end      string
+		expected string
+	}{
+		{"This is my name", "This", "name", " is my "},
+		{"This is my name", "@", "name", ""},
+		{"This is my name", "This", "@", ""},
+		{"[a] bc [d]", "[", "]", "a"},
+	}
+
+	for _, tc := range testCases {
+		result := BetweenFirst(tc.input, tc.start, tc.end)
+
+		if result != tc.expected {
+			t.Errorf("BetweenFirst(%s, %s, %s) = %s; want %s", tc.input, tc.start, tc.end, result, tc.expected)
 		}
 	}
 }
