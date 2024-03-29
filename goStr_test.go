@@ -213,3 +213,29 @@ func TestAPA(t *testing.T) {
 		}
 	}
 }
+
+func TestAscii(t *testing.T) {
+	testCases := []struct {
+		input    string
+		expected string
+	}{
+		{"û", "u"},
+		{"ñ", "n"},
+		{"é", "e"},
+		{"ø", "o"},
+		{"ß", "ss"},
+		{"äöü", "aou"},
+		{"こんにちは", "konnichiha"},
+		{"你好世界", "Ni Hao Shi Jie "},
+		{"안녕하세요", "annyeonghaseyo"},
+		{"", ""},
+	}
+
+	for _, tc := range testCases {
+		result := Ascii(tc.input)
+
+		if result != tc.expected {
+			t.Errorf("Ascii(%s) = %s; want %s", tc.input, result, tc.expected)
+		}
+	}
+}
