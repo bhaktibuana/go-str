@@ -20,6 +20,7 @@ go get github.com/bhaktibuana/go-str
 - [APA](#apa)
 - [Ascii](#ascii)
 - [Before](#before)
+- [BeforeLast](#beforelast)
 - [Camel](#camel)
 - [Headline](#headline)
 - [Limit](#limit)
@@ -144,6 +145,30 @@ import "github.com/bhaktibuana/go-str"
 goStr.Before("The quick brown fox jumps over the lazy dog", "fox")
 
 // "The quick brown "
+
+```
+
+#### BeforeLast
+
+`BeforeLast` method returns everything before the last occurrence of the given value in a string.
+
+```go
+/*
+ * @param input string
+ * @param substr string
+ * @returns string
+ */
+func BeforeLast(input, substr string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.BeforeLast("www.example.com/user/profile", "/")
+
+// "www.example.com/user"
 
 ```
 
