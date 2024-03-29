@@ -1,8 +1,10 @@
 package goStr
 
 import (
+	"fmt"
+	"strconv"
 	"strings"
-	"unicode"
+	"unicode"Ï
 
 	"github.com/rainycape/unidecode"
 )
