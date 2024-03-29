@@ -41,11 +41,7 @@ func FormatCurrency(amountStr string, useDecimal bool, dotSeparator bool) string
 
 	if useDecimal {
 		result := strings.Split(formattedAmount, decimal)
-
 		index := strings.LastIndex(result[0], separator)
-		if index == -1 {
-			return strings.Join(result, decimal)
-		}
 
 		result[0] = result[0][:index]
 
