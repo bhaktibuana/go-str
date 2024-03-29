@@ -256,3 +256,61 @@ func BeforeLast(input, substr string) string {
 
 	return input[:index]
 }
+
+// Currency method will convert an amount of number or string into selected country code currency format.
+/*
+ * @param amount interface{}
+ * @param code CurrencyCode (string)
+ * @param options bool
+ * @returns string
+ */
+func Currency(amount interface{}, code CurrencyCode, options ...bool) string {
+	currencyFormat, ok := CurrencyFormats[code]
+	if !ok {
+		return ""
+	}
+
+	useDecimal := true
+	if len(options) > 0 {
+		useDecimal = options[0]
+	}
+
+	dotSeparator := false
+	if len(options) > 0 {
+		dotSeparator = options[1]
+	}
+
+	useSpacer := true
+	if len(options) > 0 {
+		useSpacer = options[2]
+	}
+
+	var num float64
+
+	switch val := amount.(type) {
+	case int:
+		num = float64(val)
+	case float64:
+		num = val
+	case string:
+		parsedNum, err := strconv.ParseFloat(val, 64)
+		if err != nil {
+			return ""
+		}
+		num = parsedNum
+	default:
+		return ""
+	}
+
+	amountStr := strconv.FormatFloat(num, 'f', 2, 64)
+	if !useDecimal {
+		amountStr = strconv.Itoa(int(num))
+	}
+	formattedAmount := FormatCurrency(amountStr, useDecimal, dotSeparator)
+
+	if useSpacer {
+		return fmt.Sprintf("%s %s", currencyFormat, formattedAmount)
+	}
+
+	return fmt.Sprintf("%s%s", currencyFormat, formattedAmount)
+}
