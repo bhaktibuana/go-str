@@ -348,7 +348,7 @@ func TestBetween(t *testing.T) {
 		{"This is my name", "This", "name", " is my "},
 		{"This is my name", "@", "name", ""},
 		{"This is my name", "This", "@", ""},
-		{"", "", "", ""},
+		{"[a] bc [d]", "[", "]", "a] bc [d"},
 	}
 
 	for _, tc := range testCases {
@@ -356,6 +356,28 @@ func TestBetween(t *testing.T) {
 
 		if result != tc.expected {
 			t.Errorf("Between(%s, %s, %s) = %s; want %s", tc.input, tc.start, tc.end, result, tc.expected)
+		}
+	}
+}
+
+func TestBetweenFirst(t *testing.T) {
+	testCases := []struct {
+		input    string
+		start    string
+		end      string
+		expected string
+	}{
+		{"This is my name", "This", "name", " is my "},
+		{"This is my name", "@", "name", ""},
+		{"This is my name", "This", "@", ""},
+		{"[a] bc [d]", "[", "]", "a"},
+	}
+
+	for _, tc := range testCases {
+		result := BetweenFirst(tc.input, tc.start, tc.end)
+
+		if result != tc.expected {
+			t.Errorf("BetweenFirst(%s, %s, %s) = %s; want %s", tc.input, tc.start, tc.end, result, tc.expected)
 		}
 	}
 }
