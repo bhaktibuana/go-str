@@ -280,3 +280,60 @@ func TestBeforeLast(t *testing.T) {
 		}
 	}
 }
+
+func TestCurrency(t *testing.T) {
+	decimalTrue := true
+	decimalFalse := false
+	dotSeparatorTrue := true
+	dotSeparatorFalse := false
+	spacerTrue := true
+	spacerFalse := false
+
+	testCases := []struct {
+		amount       interface{}
+		code         CurrencyCode
+		useDecimal   *bool
+		dotSeparator *bool
+		useSpacer    *bool
+		expected     string
+	}{
+		{10000, CURRENCY_IDR, &decimalTrue, &dotSeparatorFalse, &spacerTrue, "Rp 10,000.00"},
+		{"10000", CURRENCY_USD, &decimalTrue, &dotSeparatorFalse, &spacerTrue, "$ 10,000.00"},
+		{12000, CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerTrue, "Rp 12.000,00"},
+		{"12000", CURRENCY_IDR, &decimalFalse, &dotSeparatorFalse, &spacerTrue, "Rp 12,000"},
+		{15250.8972, CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, "Rp15.250,90"},
+		{"@", CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, ""},
+		{"", CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, ""},
+		{true, CURRENCY_IDR, &decimalTrue, &dotSeparatorTrue, &spacerFalse, ""},
+		{1000, "", &decimalTrue, &dotSeparatorTrue, &spacerFalse, ""},
+	}
+
+	for _, tc := range testCases {
+		var useDecimal bool
+		if tc.useDecimal != nil {
+			useDecimal = *tc.useDecimal
+		} else {
+			useDecimal = true
+		}
+
+		var dotSeparator bool
+		if tc.dotSeparator != nil {
+			dotSeparator = *tc.dotSeparator
+		} else {
+			dotSeparator = false
+		}
+
+		var useSpacer bool
+		if tc.useSpacer != nil {
+			useSpacer = *tc.useSpacer
+		} else {
+			useSpacer = true
+		}
+
+		result := Currency(tc.amount, tc.code, *tc.useDecimal, *tc.dotSeparator, *tc.useSpacer)
+
+		if result != tc.expected {
+			t.Errorf("Currency(%v, %s, %v, %v, %v) = %s; want %s", tc.amount, tc.code, useDecimal, dotSeparator, useSpacer, result, tc.expected)
+		}
+	}
+}
