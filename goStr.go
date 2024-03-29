@@ -316,3 +316,24 @@ func Currency(amount interface{}, code CurrencyCode, options ...bool) string {
 
 	return fmt.Sprintf("%s%s", currencyFormat, formattedAmount)
 }
+
+// Between method returns the portion of a string between two values.
+/*
+ * @param input string
+ * @param start string
+ * @param end string
+ * @returns string
+ */
+func Between(input, start, end string) string {
+	startIndex := strings.Index(input, start)
+	if startIndex == -1 {
+		return ""
+	}
+
+	endIndex := strings.Index(input[startIndex+len(start):], end)
+	if endIndex == -1 {
+		return ""
+	}
+
+	return input[startIndex+len(start) : startIndex+len(start)+endIndex]
+}
