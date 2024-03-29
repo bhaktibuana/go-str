@@ -21,6 +21,7 @@ go get github.com/bhaktibuana/go-str
 - [Ascii](#ascii)
 - [Before](#before)
 - [BeforeLast](#beforelast)
+- [Between](#between)
 - [Camel](#camel)
 - [Currency](#currency)
 - [Headline](#headline)
@@ -170,6 +171,31 @@ import "github.com/bhaktibuana/go-str"
 goStr.BeforeLast("www.example.com/user/profile", "/")
 
 // "www.example.com/user"
+
+```
+
+#### Between
+
+`Between` method returns the portion of a string between two values.
+
+```go
+/*
+ * @param input string
+ * @param start string
+ * @param end string
+ * @returns string
+ */
+func Between(input, start, end string) string
+```
+
+- usage
+
+```go
+import "github.com/bhaktibuana/go-str"
+
+goStr.Between("This is my name", "This", "name")
+
+// " is my "
 
 ```
 
