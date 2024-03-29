@@ -261,9 +261,9 @@ func BeforeLast(input, substr string) string {
 
 // Currency method will convert an amount of number or string into selected country code currency format.
 /*
- * @param amount interface{}
+ * @param amount interface{} (int | float64 | string)
  * @param code CurrencyCode (string)
- * @param options bool
+ * @param options ...bool (useDecimal true, dotSeparator false, useSpacer true)
  * @returns string
  */
 func Currency(amount interface{}, code CurrencyCode, options ...bool) string {
