@@ -19,10 +19,16 @@ func FormatCurrency(amountStr string, useDecimal bool, dotSeparator bool) string
 		decimal = "."
 	}
 
+	if useDecimal {
+		amountSplit := strings.Split(amountStr, ".")
+		amountSplit[1] = amountSplit[1][:2]
+		amountStr = strings.Join(amountSplit, decimal)
+	}
+
 	if dotSeparator && useDecimal {
-		parts = splitAmount(strings.Join(strings.Split(amountStr, "."), ","))
+		parts = []byte(strings.Join(strings.Split(amountStr, "."), ","))
 	} else {
-		parts = splitAmount(amountStr)
+		parts = []byte(amountStr)
 	}
 
 	for i := range parts {
@@ -35,15 +41,16 @@ func FormatCurrency(amountStr string, useDecimal bool, dotSeparator bool) string
 
 	if useDecimal {
 		result := strings.Split(formattedAmount, decimal)
-		result[0] = BeforeLast(result[0], separator)
+
+		index := strings.LastIndex(result[0], separator)
+		if index == -1 {
+			return strings.Join(result, decimal)
+		}
+
+		result[0] = result[0][:index]
 
 		return strings.Join(result, decimal)
 	}
 
 	return formattedAmount
-}
-
-// splitAmount splits the amount string into parts.
-func splitAmount(amountStr string) []byte {
-	return []byte(amountStr)
 }
