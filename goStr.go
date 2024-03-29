@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-	"unicode"Ï
+	"unicode"
 
 	"github.com/rainycape/unidecode"
 )
