@@ -3,6 +3,8 @@ package goStr
 import (
 	"strings"
 	"unicode"
+
+	"github.com/rainycape/unidecode"
 )
 
 // Camel method converts the given string to camelCase.
@@ -199,41 +201,12 @@ func APA(input string) string {
 		return input
 	}
 
-	lowercaseWords := map[string]bool{
-		"a":     true,
-		"an":    true,
-		"the":   true,
-		"and":   true,
-		"but":   true,
-		"or":    true,
-		"for":   true,
-		"nor":   true,
-		"on":    true,
-		"at":    true,
-		"to":    true,
-		"by":    true,
-		"with":  true,
-		"of":    true,
-		"in":    true,
-		"into":  true,
-		"near":  true,
-		"over":  true,
-		"off":   true,
-		"up":    true,
-		"down":  true,
-		"out":   true,
-		"as":    true,
-		"about": true,
-		"from":  true,
-		"via":   true,
-	}
-
 	words := strings.Fields(input)
 
 	words[0] = strings.Title(words[0])
 
 	for i := 1; i < len(words); i++ {
-		if _, ok := lowercaseWords[strings.ToLower(words[i])]; ok {
+		if _, ok := apaMinorWords[strings.ToLower(words[i])]; ok {
 			words[i] = strings.ToLower(words[i])
 		} else {
 			words[i] = strings.Title(words[i])
@@ -241,4 +214,13 @@ func APA(input string) string {
 	}
 
 	return strings.Join(words, " ")
+}
+
+// Ascii method will attempt to transliterate the string into an ASCII value.
+/*
+ * @param input string
+ * @returns string
+ */
+func Ascii(input string) string {
+	return unidecode.Unidecode(input)
 }
