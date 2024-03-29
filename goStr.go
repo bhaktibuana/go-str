@@ -224,3 +224,19 @@ func APA(input string) string {
 func Ascii(input string) string {
 	return unidecode.Unidecode(input)
 }
+
+// Before method returns everything before the given value in a string.
+/*
+ * @param input string
+ * @param substr string
+ * @returns string
+ */
+func Before(input, substr string) string {
+	index := strings.Index(input, substr)
+
+	if index == -1 {
+		return ""
+	}
+
+	return input[:index]
+}

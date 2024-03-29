@@ -239,3 +239,23 @@ func TestAscii(t *testing.T) {
 		}
 	}
 }
+
+func TestBefore(t *testing.T) {
+	testCases := []struct {
+		input    string
+		substr   string
+		expected string
+	}{
+		{"The quick brown fox jumps over the lazy dog", "fox", "The quick brown "},
+		{"Yellow green blue", "red", ""},
+		{"", "", ""},
+	}
+
+	for _, tc := range testCases {
+		result := Before(tc.input, tc.substr)
+
+		if result != tc.expected {
+			t.Errorf("Before(%s) = %s; want %s", tc.input, result, tc.expected)
+		}
+	}
+}
